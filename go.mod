@@ -3,6 +3,7 @@ module github.com/golang108/drone-runner-exec
 go 1.19
 
 require (
+	github.com/drone/drone-go v1.7.1
 	github.com/joho/godotenv v1.5.1
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )
