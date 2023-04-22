@@ -100,6 +100,8 @@ func (c *Compiler) Compile(ctx context.Context) *engine.Spec {
 			fmt.Sprintf("drone-%s", random()),
 		)
 	}
+	// 拼接出来 drone 需要的 一个 根路径，然后这个根路径下面会新建几个子目录做其他用途
+	spec.Root, _ = filepath.Abs(spec.Root) // 这里转换为绝对路径，不然后面调用脚本会有路径找不到的问题
 
 	spec.Platform.OS = c.Pipeline.Platform.OS
 	spec.Platform.Arch = c.Pipeline.Platform.Arch
