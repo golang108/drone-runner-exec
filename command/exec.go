@@ -64,7 +64,7 @@ func (c *execCommand) run(*kingpin.ParseContext) error {
 		return err
 	}
 
-	// parse and lint the configuration.
+	// parse and lint the configuration.这里比较关键，从yml文件解析为 manifest 对象
 	manifest, err := manifest.ParseString(config)
 	if err != nil {
 		return err
@@ -72,6 +72,8 @@ func (c *execCommand) run(*kingpin.ParseContext) error {
 
 	// a configuration can contain multiple pipelines.
 	// get a specific pipeline resource for execution.
+	// 当前需要执行的 pipline 是从 manifest 列表中 根据name获取 到的
+	// name 如果没匹配上就报错，资源没找到, 可以通过选项 --stage-name
 	resource, err := resource.Lookup(c.Stage.Name, manifest)
 	if err != nil {
 		return err
