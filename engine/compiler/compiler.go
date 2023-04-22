@@ -108,30 +108,30 @@ func (c *Compiler) Compile(ctx context.Context) *engine.Spec {
 	spec.Platform.Variant = c.Pipeline.Platform.Variant
 	spec.Platform.Version = c.Pipeline.Platform.Version
 
-	// creates a home directory in the root.
-	homedir := filepath.Join(spec.Root, "home", "drone")
+	// creates a home directory in the root. 新建个 <Root>/home/ 目录
+	homedir := filepath.Join(spec.Root, "home")
 	spec.Files = append(spec.Files, &engine.File{
 		Path:  homedir,
 		Mode:  0700,
 		IsDir: true,
 	})
 
-	// creates a source directory in the root.
-	sourcedir := filepath.Join(spec.Root, "drone", "src")
+	// creates a source directory in the root. 新建个 <Root>/src 目录
+	sourcedir := filepath.Join(spec.Root, "src")
 	spec.Files = append(spec.Files, &engine.File{
 		Path:  sourcedir,
 		Mode:  0700,
 		IsDir: true,
 	})
 
-	// creates the opt directory to hold all scripts.
+	// creates the opt directory to hold all scripts.新建个 <Root>/opt 目录
 	spec.Files = append(spec.Files, &engine.File{
 		Path:  filepath.Join(spec.Root, "opt"),
 		Mode:  0700,
 		IsDir: true,
 	})
 
-	// creates the netrc file
+	// creates the netrc file 新建 netrc 文件。这个莫名其妙的
 	if c.Netrc != nil {
 		netrcpath := filepath.Join(homedir, netrc)
 		netrcdata := fmt.Sprintf(
