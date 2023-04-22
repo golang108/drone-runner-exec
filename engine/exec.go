@@ -8,7 +8,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 	"os/exec"
 
@@ -49,7 +48,7 @@ func (e *engine) Setup(ctx context.Context, spec *Spec) error {
 		if file.IsDir == true {
 			continue
 		}
-		err = ioutil.WriteFile(file.Path, file.Data, os.FileMode(file.Mode))
+		err = os.WriteFile(file.Path, file.Data, os.FileMode(file.Mode))
 		if err != nil {
 			logger.FromContext(ctx).
 				WithError(err).
@@ -76,7 +75,7 @@ func (e *engine) Setup(ctx context.Context, spec *Spec) error {
 			if file.IsDir == true {
 				continue
 			}
-			err = ioutil.WriteFile(file.Path, file.Data, os.FileMode(file.Mode))
+			err = os.WriteFile(file.Path, file.Data, os.FileMode(file.Mode))
 			if err != nil {
 				logger.FromContext(ctx).
 					WithError(err).
