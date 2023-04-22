@@ -1,0 +1,37 @@
+kind: pipeline
+type: exec
+name: default
+version: 1.0.0
+
+clone:
+  branch: master
+  commit: 792f6cd
+  ref:
+  remote:  https://github.com/golang108/drone-runner
+
+steps:
+- name: test1
+  commands:
+    - echo "xxxxxxxxxxxxxxx111"
+    - env|grep -i drone
+
+- name: test2
+  commands:
+    - echo "xxxxxxxxxxxxxxx222"
+    - env
+---
+
+kind: pipeline
+type: exec
+name: test
+
+steps:
+- name: test11
+  commands:
+    - echo "xxxxxxxxxxxxxxx111"
+
+- name: test21
+  commands:
+    - echo "xxxxxxxxxxxxxxx222"
+---
+
