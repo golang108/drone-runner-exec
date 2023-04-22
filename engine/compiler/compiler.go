@@ -125,8 +125,9 @@ func (c *Compiler) Compile(ctx context.Context) *engine.Spec {
 	})
 
 	// creates the opt directory to hold all scripts.新建个 <Root>/opt 目录
+	optPath := filepath.Join(spec.Root, "opt")
 	spec.Files = append(spec.Files, &engine.File{
-		Path:  filepath.Join(spec.Root, "opt"),
+		Path:  optPath,
 		Mode:  0700,
 		IsDir: true,
 	})
@@ -177,12 +178,10 @@ func (c *Compiler) Compile(ctx context.Context) *engine.Spec {
 		// TODO(bradrydzewski) windows variable HOMEDRIVE
 		// TODO(bradrydzewski) windows variable LOCALAPPDATA
 		map[string]string{
-			"HOME":                homedir,
-			"HOMEPATH":            homedir, // for windows
-			"USERPROFILE":         homedir, // for windows
-			"DRONE_HOME":          sourcedir,
-			"DRONE_WORKSPACE":     sourcedir,
-			"GIT_TERMINAL_PROMPT": "0",
+			"DRONE_WORKSPACE": sourcedir,
+			"DRONE_HOME":      homedir,
+			"DRONE_OPT":       optPath,
+			"DRONE_ROOT":      spec.Root,
 		},
 	)
 
