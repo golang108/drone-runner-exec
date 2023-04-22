@@ -82,7 +82,7 @@ func (c *execCommand) run(*kingpin.ParseContext) error {
 		Pipeline: resource,
 		Manifest: manifest,
 		Build:    c.Build,
-		Netrc:    c.Netrc,
+		Netrc:    nil, // c.Netrc,  // 新建 netrc 文件。这个莫名其妙的 这里直接干掉
 		Repo:     c.Repo,
 		Stage:    c.Stage,
 		System:   c.System,
