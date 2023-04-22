@@ -31,15 +31,7 @@ func (c *compileCommand) run(*kingpin.ParseContext) error {
 		return err
 	}
 
-	envs := environ.Combine(
-		c.Environ,
-		environ.System(c.System),
-		environ.Repo(c.Repo),
-		environ.Build(c.Build),
-		environ.Stage(c.Stage),
-		environ.Link(c.Repo, c.Build, c.System),
-		c.Build.Params,
-	)
+	envs := environ.Combine()
 
 	// string substitution function ensures that string
 	// replacement variables are escaped and quoted if they
