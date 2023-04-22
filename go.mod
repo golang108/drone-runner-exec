@@ -24,6 +24,10 @@ require (
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )
 
+replace (
+	github.com/drone/runner-go v1.3.1 => /home/mamh/work/github/drone-runner
+)
+
 require (
 	github.com/99designs/basicauth-go v0.0.0-20160802081356-2a93ba0f464d // indirect
 	github.com/99designs/httpsignatures-go v0.0.0-20170731043157-88528bf4ca7e // indirect
