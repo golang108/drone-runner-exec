@@ -79,8 +79,8 @@ func (c *execCommand) run(*kingpin.ParseContext) error {
 
 	// compile the pipeline to an intermediate representation.
 	comp := &compiler.Compiler{
-		Pipeline: resource,
-		Manifest: manifest,
+		Pipeline: resource, // 这个是通过yml中name获取的那个
+		Manifest: manifest, // 这里面保存了全部的resource
 		Build:    c.Build,
 		Netrc:    nil, // c.Netrc,  // 新建 netrc 文件。这个莫名其妙的 这里直接干掉
 		Repo:     c.Repo,
@@ -88,7 +88,7 @@ func (c *execCommand) run(*kingpin.ParseContext) error {
 		System:   c.System,
 		Environ:  c.Environ,
 		Secret:   secret.StaticVars(c.Secrets),
-		Root:     c.Root,
+		Root:     c.Root, // 这个来自命令行
 	}
 	spec := comp.Compile(nocontext)
 
