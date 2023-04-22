@@ -196,10 +196,10 @@ func (c *Compiler) Compile(ctx context.Context) *engine.Spec {
 		clonefile := shell.Script(
 			clone.Commands(
 				clone.Args{
-					Branch: c.Build.Target,
-					Commit: c.Build.After,
-					Ref:    c.Build.Ref,
-					Remote: repoUrl,
+					Branch: c.Pipeline.Clone.Branch,
+					Commit: c.Pipeline.Clone.Commit,
+					Ref:    c.Pipeline.Clone.Ref,
+					Remote: c.Pipeline.Clone.Remote,
 				},
 			),
 		)
