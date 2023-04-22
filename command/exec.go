@@ -92,7 +92,6 @@ func (c *execCommand) run(*kingpin.ParseContext) error {
 	}
 	spec := comp.Compile(nocontext)
 
-	fmt.Println(spec)
 	// create a step object for each pipeline step.
 	for _, step := range spec.Steps {
 		if step.RunPolicy == engine.RunNever {
