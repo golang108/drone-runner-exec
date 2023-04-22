@@ -84,9 +84,9 @@ func ParseFlags(cmd *kingpin.CmdClause) *Flags {
 	cmd.Flag("stage-created", "stage created").Default(now).Int64Var(&f.Stage.Created)
 	cmd.Flag("stage-updated", "stage updated").Default(now).Int64Var(&f.Stage.Updated)
 
-	cmd.Flag("netrc-username", "netrc username").Default("").StringVar(&f.Netrc.Login)
-	cmd.Flag("netrc-password", "netrc password").Default("").StringVar(&f.Netrc.Password)
-	cmd.Flag("netrc-machine", "netrc machine").Default("").StringVar(&f.Netrc.Machine)
+	//cmd.Flag("netrc-username", "netrc username").Default("").StringVar(&f.Netrc.Login)
+	//cmd.Flag("netrc-password", "netrc password").Default("").StringVar(&f.Netrc.Password)
+	//cmd.Flag("netrc-machine", "netrc machine").Default("").StringVar(&f.Netrc.Machine)
 
 	cmd.Flag("system-host", "server host").Default("").StringVar(&f.System.Host)
 	cmd.Flag("system-proto", "server proto").Default("").StringVar(&f.System.Proto)
